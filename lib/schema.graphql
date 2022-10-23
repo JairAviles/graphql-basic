@@ -9,6 +9,6 @@ type Course {
 type Query {
   "Retrieve all courses"
   courses: [Course]
-  "Retriver one course"
+  "Retrieve one course"
   course(id: ID!): Course
 }

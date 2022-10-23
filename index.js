@@ -23,12 +23,8 @@ const schema = makeExecutableSchema({
   resolvers
 })
 
-// Config resolvers
-const rootValue = resolvers
-
 app.use('/api', graphqlHTTP({
   schema,
-  rootValue,
   graphiql: true
 }))
 
