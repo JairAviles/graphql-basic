@@ -1,3 +1,10 @@
+"Validates level types"
+enum Level {
+  beginner
+  intermediate
+  advance
+}
+
 type Course {
   _id: ID!
   title: String!
@@ -5,6 +12,7 @@ type Course {
   description: String!
   topic: String
   students: [Student]
+  level: Level
 }
 
 type Student {
@@ -29,6 +37,7 @@ input CourseInput {
   teacher: String
   description: String!
   topic: String
+  level: Level
 }
 
 input CourseEditInput {
@@ -36,6 +45,7 @@ input CourseEditInput {
   teacher: String
   description: String
   topic: String
+  level: Level
 }
 
 input StudentInput {

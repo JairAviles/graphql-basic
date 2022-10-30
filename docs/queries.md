@@ -59,10 +59,34 @@ query GetCourse($course: ID!) {
 }
 ```
 
-Requiere a JSON object
+Requires a JSON object
 
 ```json
 {
   "course": "_id"
+}
+```
+
+## Mutation
+
+```graphql
+mutation CreateNewCourse($input: CourseInput!) {
+  course(input: $input) {
+    _id
+    title
+    description
+    level
+  }
+}
+```
+
+```json
+{
+  "input": {
+    "title": "",
+    "teacher": "",
+    "description": "",
+    "level": ""
+  }
 }
 ```
