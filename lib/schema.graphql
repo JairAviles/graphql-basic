@@ -15,10 +15,24 @@ type Course {
   level: Level
 }
 
-type Student {
+interface Person {
   _id: ID!
   name: String!
   email: String!
+}
+
+type Student implements Person {
+  _id: ID!
+  name: String!
+  email: String!
+  avatar: String!
+}
+
+type Monitor implements Person {
+  _id: ID!
+  name: String!
+  email: String!
+  phone: String!
 }
 
 type Query {
@@ -26,10 +40,10 @@ type Query {
   courses: [Course]
   "Retrieve one course"
   course(id: ID!): Course
-  "Retrieve all students"
-  students: [Student]
-  "Retrieve one student"
-  student(id: ID!): Student
+  "Retrieve all people"
+  people: [Person]
+  "Retrieve one Pperson"
+  person(id: ID!): Person
 }
 
 input CourseInput {
@@ -48,14 +62,18 @@ input CourseEditInput {
   level: Level
 }
 
-input StudentInput {
+input PersonInput {
   name: String!
   email: String!
+  phone: String
+  avatar: String
 }
 
-input StudentEditInput {
+input PersonEditInput {
   name: String
   email: String
+  phone: String
+  avatar: String
 }
 
 type Mutation {
@@ -65,12 +83,12 @@ type Mutation {
   editCourse(id: ID!, input: CourseEditInput): Course
   "Deletes a course"
   deleteCourse(id: ID!): Boolean
-  "Creates a student"
-  student(input: StudentInput!): Student
-  "Edits a student"
-  editStudent(id: ID!, input: StudentEditInput): Student
-  "Deletes a student"
-  deleteStudent(id: ID!): Boolean
-  "Assignate student to one course"
-  assignStudent(courseId: ID!, studentId: ID!): Course
+  "Creates a person"
+  person(input: PersonInput!): Person
+  "Edits a person"
+  editPerson(id: ID!, input: PersonEditInput): Person
+  "Deletes a person"
+  deletePerson(id: ID!): Boolean
+  "Assignate person to one course"
+  assignPerson(courseId: ID!, personId: ID!): Course
 }
