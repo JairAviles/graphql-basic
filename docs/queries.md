@@ -90,3 +90,34 @@ mutation CreateNewCourse($input: CourseInput!) {
   }
 }
 ```
+
+## Directives
+
+```graphql
+query people($monitor: Boolean!, $avatar: Boolean!) {
+  people {
+    ...PersonFields
+    ... on Monitor @include(if: $monitor) {
+      phone
+    }
+    ... on Student @include(if: $avatar) {
+      avatar
+    }
+  }
+}
+
+fragment PersonFields on Person {
+  _id
+  name
+  email
+}
+```
+
+Requires a JSON object
+
+```json
+{
+  "monitor": true,
+  "avatar": false
+}
+```
