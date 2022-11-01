@@ -121,3 +121,25 @@ Requires a JSON object
   "avatar": false
 }
 ```
+
+## Unions
+
+```graphql
+{
+  searchItems(keyword: "1") {
+    __typename
+    ... on Course {
+      title
+      description
+    }
+    ... on Monitor {
+      name
+      phone
+    }
+    ... on Student {
+      name
+      email
+    }
+  }
+}
+```
